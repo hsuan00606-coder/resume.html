@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>楊立璿 - 個人履歷</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== HEADER / HERO ===== -->
+  <header class="hero">
+    <nav class="nav-bar">
+      <span class="nav-brand">楊立璿 Portfolio</span>
+      <ul class="nav-links">
+        <li><a href="#profile">個人檔案</a></li>
+        <li><a href="#works">作品集</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#contact">聯絡</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-content">
+      <div class="photo-wrap">
+        <img src="images/photo.png" alt="楊立璿個人照片" class="profile-photo" />
+      </div>
+      <div class="hero-info">
+        <div class="name-badge">楊立璿</div>
+        <p class="slogan">Rest at the end, not in the middle.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main-grid">
+
+    <!-- ── LEFT COLUMN ── -->
+    <aside class="left-col">
+
+      <section id="profile" aria-labelledby="profile-heading">
+        <h2 id="profile-heading">個人檔案</h2>
+        <p><span class="label">個性：</span>主動負責、樂於學習新事物</p>
+        <p><span class="label">興趣：</span>閱讀、聽音樂</p>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">聯絡資訊</h2>
+        <p>Email：<a href="mailto:hsuan00606@gmail.com" class="email-link">hsuan00606@gmail.com</a></p>
+      </section>
+
+      <section id="edu" aria-labelledby="edu-heading">
+        <h2 id="edu-heading">學歷</h2>
+        <p>中原大學資訊工程學系</p>
+        <p class="date-range">09/22 ~ 06/26</p>
+      </section>
+
+    </aside>
+
+    <!-- ── DIVIDER ── -->
+    <div class="divider" role="separator"></div>
+
+    <!-- ── RIGHT COLUMN ── -->
+    <section class="right-col">
+
+      <article id="works" aria-labelledby="works-heading">
+        <h2 id="works-heading">個人經歷 / 作品 / 證照</h2>
+        <div class="gallery">
+          <figure class="thumb" data-src="images/photo1.jpg" data-caption="參加2025上銀機械手臂競賽(應用組)。我在組中負責撰寫程式碼，操控機械手臂在不同點位間的移動、對末端裝置的控制、感測器間資料的傳遞與判斷邏輯">
+            <img src="images/photo1.1.jpg" alt="2025上銀機械手臂競賽(應用組)" />
+            <figcaption>2025上銀機械手臂競賽(應用組)</figcaption>
+          </figure>
+          <figure class="thumb" data-src="images/photo2.jpg" data-caption="此為Nvidia在中原大學舉辦的工作坊，我們須學習視覺辨識模型的運作原理，並最終訓練一個正確率達到標準的模型">
+            <img src="images/photo2.1.jpg" alt="NVIDIA校園工作坊" />
+            <figcaption>NVIDIA校園工作坊</figcaption>
+          </figure>
+          <figure class="thumb" data-src="images/photo3.jpg" data-caption="多益860成績單">
+            <img src="images/photo3.1.jpg" alt="多益860成績單" />
+            <figcaption>多益860成績單</figcaption>
+          </figure>
+
+        </div>
+      </article>
+
+      <article id="skills" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">掌握的程式技能</h2>
+        <ul class="skill-list">
+          <li><span class="skill-cat">直接撰寫程式碼：</span>C、C++</li>
+          <li><span class="skill-cat">具專案開發經驗：</span>Python、Unity</li>
+          <li><span class="skill-cat">管理資料庫：</span>SQL</li>
+        </ul>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>© 2026 楊立璿｜All Rights Reserved</p>
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="圖片放大檢視">
+    <button class="lb-close" id="lb-close" aria-label="關閉">✕ <span>Close (Esc)</span></button>
+    <img id="lb-img" src="" alt="" class="lb-image" />
+    <p id="lb-caption" class="lb-caption"></p>
+  </div>
+
+  <script>
+    // 點擊圖片放大，加入白色說明文字
+    // 取得 Lightbox 相關元素
+    const lightbox  = document.getElementById('lightbox');   // 整個放大檢視的容器
+    const lbImg     = document.getElementById('lb-img');     // 放大後顯示的大圖
+    const lbCaption = document.getElementById('lb-caption'); // 放大後下方的文字說明
+    const lbClose   = document.getElementById('lb-close');   // 關閉按鈕
+
+    // 針對每個縮圖 <figure> 加上點擊事件
+    document.querySelectorAll('.thumb').forEach(fig => {
+      fig.addEventListener('click', () => {
+        // 點擊縮圖時，將 Lightbox 的圖片來源換成 data-src (完整版圖片)
+        lbImg.src = fig.dataset.src;
+        // 將圖片的 alt 屬性改成 data-caption (方便無障礙使用)
+        lbImg.alt = fig.dataset.caption;
+        // 將 Lightbox 下方文字改成 data-caption (這就是白色文字說明的來源)
+        lbCaption.textContent = fig.dataset.caption;
+        // 顯示 Lightbox
+        lightbox.classList.add('active');
+      });
+    });
+
+    // 關閉 Lightbox 的函式
+    function closeLB() { 
+      lightbox.classList.remove('active'); 
+    }
+
+    // 點擊關閉按鈕時關閉 Lightbox
+    lbClose.addEventListener('click', closeLB);
+
+    // 點擊 Lightbox 背景區域時關閉 (避免誤觸圖片本身)
+    lightbox.addEventListener('click', e => { 
+      if (e.target === lightbox) closeLB(); 
+    });
+
+    // 按下鍵盤 ESC 鍵時關閉 Lightbox
+    document.addEventListener('keydown', e => { 
+      if (e.key === 'Escape') closeLB(); 
+    });
+
+  </script>
+</body>
+</html>
